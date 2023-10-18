@@ -32,7 +32,7 @@ public :
 	}
 	void move() override {
 		velocity += 2;
-		std::cout << "vsh vsh";
+		std::cout << "vsh vsh" << std::endl;
 	}
 };
 
@@ -43,23 +43,23 @@ public :
 	}
 	void move() override {
 		velocity += 100;
-		std::cout << "vzhuhh";
+		std::cout << "vzhuhh" << std::endl ;
 	}
 };
 
 int main() {
-	std::vector <vehicle> vehicles;
+	std::vector <vehicle*> vehicles;
 
 	plane Boeing777(0,"red");
-	vehicles.push_back(Boeing777);
+	vehicles.push_back(&Boeing777);
 	car Tesla(50, "dark");
-	vehicles.push_back(Tesla);
+	vehicles.push_back(&Tesla);
 	boat Titanic(10, "dark");
-	vehicles.push_back(Titanic);
+	vehicles.push_back(&Titanic);
 
-	Tesla.move();
+	std::cout << std::endl;
 
-	for (auto &transport: vehicles) {
-		transport.move();
+	for (int i = 0; i < vehicles.size(); i++) {
+		vehicles[i]->move();
 	}
 }	
